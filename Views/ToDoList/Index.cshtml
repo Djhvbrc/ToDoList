@@ -1,0 +1,43 @@
+﻿@model IndexVM
+@{
+    ViewBag.Title = "Index";
+}
+<table class="table">
+    <tr>
+        <th>
+            Задачи
+        </th>
+    </tr>
+    @foreach (var item in Model.lists)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.ActionLink("Сделано", "Made", new { id = item.id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+</table>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Сделано
+            </th>
+        </tr>
+
+        @foreach (var item in Model.madeLists)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+            </tr>
+        }
+
+    </table>
